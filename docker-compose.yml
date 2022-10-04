@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  greeting:
+    image: danger89/cmake:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/greeting/src
+      - ./CMakeLists.txt:/greeting/CMakeLists.txt
+      - ./init.sh:/init.sh
+      - ./watch.sh:/watch.sh
+    entrypoint: "/watch.sh"
