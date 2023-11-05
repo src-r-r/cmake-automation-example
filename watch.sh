@@ -7,7 +7,7 @@ while [ -L "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
     [[ $SOURCE != /* ]] && SOURCE=$DIR/$SOURCE # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
 done
 DIR=$(cd -P "$(dirname "$SOURCE")" >/dev/null 2>&1 && pwd)
+PROJ_DIR=/greeting
+#PROJ_DIR=$DIR
 
-PROJ_ROOT=/greeting
-
-ls ${PROJ_ROOT}/CMakeLists.txt ${PROJ_ROOT}/src/* | entr -d "/init.sh"
+ls ${PROJ_DIR}/CMakeLists.txt ${PROJ_DIR}/src/* | entr -d "${PROJ_DIR}/init.sh"
